@@ -26,7 +26,7 @@ void print_matrix(struct matrix *m) {
   for (i = 0; i < m->rows; i++){
     int v;
     for (v = 0; v < m->cols; v++){
-      printf("%ld ", m[i][v]);
+      printf("%lf ", m->m[i][v]);
     }
     printf("\n");
   }
