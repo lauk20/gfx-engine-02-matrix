@@ -43,7 +43,7 @@ int main(){
   screen s;
   clear_screen(s);
   color c;
-  c.red = 255;
+  c.red = 0;
   c.green = 255;
   c.blue = 255;
   struct matrix * edges;
