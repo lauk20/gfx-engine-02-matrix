@@ -26,7 +26,7 @@ int main(){
   int i;
   for (i = 0; i < 1000; i++){
     int y = (i - 100) * (i - 100);
-    int y2 = (i + 1 - 6) * (i + 1 - 3);
+    int y2 = (i + 1 - 100) * (i + 1 - 100);
     add_edge(edge, i, y, 0, i + 1, y2, 0);
   }
 
