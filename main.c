@@ -39,6 +39,37 @@ int main(){
   printf("\nTesting Matrix mult. m1 * m2 =\n");
   matrix_mult(m1, test);
   print_matrix(test);
+
+  screen s;
+  clear_screen(s);
+  color c;
+  c.red = 255;
+  c.green = 255;
+  c.blue = 255;
+  struct matrix * edges;
+  edges = new_matrix(4,4);
+  add_edge(edges, 50, 450, 0, 100, 450, 0);
+  add_edge(edges, 50, 450, 0, 50, 400, 0);
+  add_edge(edges, 100, 450, 0, 100, 400, 0);
+  add_edge(edges, 100, 400, 0, 50, 400, 0);
+
+  add_edge(edges, 200, 450, 0, 250, 450, 0);
+  add_edge(edges, 200, 450, 0, 200, 400, 0);
+  add_edge(edges, 250, 450, 0, 250, 400, 0);
+  add_edge(edges, 250, 400, 0, 200, 400, 0);
+
+  add_edge(edges, 150, 400, 0, 130, 360, 0);
+  add_edge(edges, 150, 400, 0, 170, 360, 0);
+  add_edge(edges, 130, 360, 0, 170, 360, 0);
+
+  add_edge(edges, 100, 340, 0, 200, 340, 0);
+  add_edge(edges, 100, 320, 0, 200, 320, 0);
+  add_edge(edges, 100, 340, 0, 100, 320, 0);
+  add_edge(edges, 200, 340, 0, 200, 320, 0);
+
+  draw_lines( edges, s, c );
+  save_extension(s, "bob.png");
+  display(s);
 }
 
 /*
