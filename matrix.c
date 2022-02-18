@@ -25,8 +25,8 @@ void print_matrix(struct matrix *m) {
   int i;
   for (i = 0; i < m->rows; i++){
     int v;
-    for (v = 0; v < m->cols; v++){
-      printf("%lf ", m->m[i][v]);
+    for (v = 0; v < m->lastcol; v++){
+      printf("%f ", m->m[i][v]);
     }
     printf("\n");
   }
@@ -38,6 +38,19 @@ Inputs:  struct matrix *m <-- assumes m is a square matrix
 turns m in to an identity matrix
 */
 void ident(struct matrix *m) {
+  int i;
+  for (i = 0; i < m->rows; i++){
+    int v;
+    for (v = 0; v < m->cols; v++){
+      if (i == v){
+        m->m[i][v] = 1;
+      } else {
+        m->m[i][v] = 0;
+      }
+    }
+  }
+
+  m->lastcol = m->cols;
 }
 
 
@@ -49,6 +62,27 @@ multiply a by b, modifying b to be the product
 a*b -> b
 */
 void matrix_mult(struct matrix *a, struct matrix *b) {
+  int i;
+  for (i = 0; i < b->lastcol; i++){
+    //printf("i: %d\n", i);
+    int v;
+    double newcol[b->rows];
+    for (v = 0; v < a->rows; v++){
+      //printf("v: %d\n", v);
+      double sum = 0;
+      int k;
+      for (k = 0; k < a->lastcol; k++){
+        //printf("k: %d\n", k);
+        sum = sum + a->m[v][k] * b->m[k][i];
+        //printf("compl\n");
+      }
+      newcol[v] = sum;
+    }
+    for (v = 0; v < b->rows; v++){
+      //printf("v2: %d\n", v);
+      b->m[v][i] = newcol[v];
+    }
+  }
 }
 
 
